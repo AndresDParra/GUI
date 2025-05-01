@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Clase utilitaria para analizar productos en el registro.
  */
-public class AnalizadorProductos {
+public class    AnalizadorProductos {
     
      /**
      * Filtra productos que contienen un componente específico.

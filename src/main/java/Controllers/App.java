@@ -39,6 +39,7 @@ public class App {
         // Filtrar por componente
         System.out.println("\nFiltrado por componente 'Limón':");
         List<Producto> filtrados = analizador.filtrarPorComponente("Limón");
+
         for (Producto p : filtrados) {
             System.out.println(p);
         }

@@ -11,8 +11,7 @@ module com.example.correccionparcial {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.correccionparcial to javafx.fxml;
-    exports com.example.correccionparcial;
+
     exports Controllers;
     opens Controllers to javafx.fxml;
 }
