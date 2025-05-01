@@ -1,5 +1,6 @@
 package Controllers;
 
+import com.example.correccionparcial.model.RegistroGlobal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ public class  Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         debugResourceLoadingg();
+        RegistroGlobal.inicializarClases();
         FXMLLoader fxmlLoader = new FXMLLoader(ClassLoader.getSystemResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 520, 440);
         stage.setTitle("Welcome to FentaLibre!");
