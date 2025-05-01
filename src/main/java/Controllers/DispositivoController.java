@@ -1,5 +1,6 @@
 package Controllers;
 
+import com.example.correccionparcial.model.DispositivoCompuesto;
 import com.example.correccionparcial.model.DispositivoSimple;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -10,9 +11,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Comparator;
 
 public class DispositivoController {
-    public TableView<DispositivoSimple> TableProductos;
+    public TableView<DispositivoSimple> tblDispositivos;
     public TableColumn<DispositivoSimple, String> clmEstado;
     public TableColumn<DispositivoSimple, String> clmPrioridad;
     public TableColumn<DispositivoSimple, String> clmTipo;
@@ -29,9 +31,13 @@ public class DispositivoController {
     public Label lblModulo;
     public TextField txfContadorPorTipo;
     public Button ButtonRegresar;
+    public TableColumn<DispositivoCompuesto, String> clmEstado1;
+    public TableView<DispositivoCompuesto> tblDispositivos1;
+    public TableColumn<DispositivoCompuesto, String> clmPrioridad1;
+    public TableColumn<DispositivoCompuesto, String> clmTipo1;
 
-    public DispositivoController(TableView<DispositivoSimple> tableProductos, TableColumn<DispositivoSimple, String> clmEstado, TableColumn<DispositivoSimple, String> clmPrioridad, TableColumn<DispositivoSimple, String> clmTipo, Label lblNombre, Label lblEstado, Label lblPrioridad, Button btnAgregarDispositivo, Button btnAgregarModulo, Button btnFiltrarConModulos, Button btnOrdenarPorPrioridad, Button btnContarPorTipo, TextField lblContadorPorTipo, Label lblTipo, Label lblModulo, TextField txfContadorPorTipo, Button buttonRegresar) {
-        TableProductos = tableProductos;
+    public DispositivoController(TableView<DispositivoSimple> tblDispositivos, TableColumn<DispositivoSimple, String> clmEstado, TableColumn<DispositivoSimple, String> clmPrioridad, TableColumn<DispositivoSimple, String> clmTipo, Label lblNombre, Label lblEstado, Label lblPrioridad, Button btnAgregarDispositivo, Button btnAgregarModulo, Button btnFiltrarConModulos, Button btnOrdenarPorPrioridad, Button btnContarPorTipo, TextField lblContadorPorTipo, Label lblTipo, Label lblModulo, TextField txfContadorPorTipo, Button buttonRegresar, TableColumn<DispositivoCompuesto, String> clmEstado1, TableView<DispositivoCompuesto> tblDispositivos1, TableColumn<DispositivoCompuesto, String> clmPrioridad1, TableColumn<DispositivoCompuesto, String> clmTipo1) {
+        this.tblDispositivos = tblDispositivos;
         this.clmEstado = clmEstado;
         this.clmPrioridad = clmPrioridad;
         this.clmTipo = clmTipo;
@@ -48,17 +54,21 @@ public class DispositivoController {
         this.lblModulo = lblModulo;
         this.txfContadorPorTipo = txfContadorPorTipo;
         ButtonRegresar = buttonRegresar;
+        this.clmEstado1 = clmEstado1;
+        this.tblDispositivos1 = tblDispositivos1;
+        this.clmPrioridad1 = clmPrioridad1;
+        this.clmTipo1 = clmTipo1;
     }
 
     public DispositivoController() {
     }
 
-    public TableView<DispositivoSimple> getTableProductos() {
-        return TableProductos;
+    public TableView<DispositivoSimple> getTblDispositivos() {
+        return tblDispositivos;
     }
 
-    public void setTableProductos(TableView<DispositivoSimple> tableProductos) {
-        TableProductos = tableProductos;
+    public void setTblDispositivos(TableView<DispositivoSimple> tblDispositivos) {
+        this.tblDispositivos = tblDispositivos;
     }
 
     public TableColumn<DispositivoSimple, String> getClmEstado() {
@@ -185,23 +195,84 @@ public class DispositivoController {
         ButtonRegresar = buttonRegresar;
     }
 
+    public TableColumn<DispositivoCompuesto, String> getClmEstado1() {
+        return clmEstado1;
+    }
+
+    public void setClmEstado1(TableColumn<DispositivoCompuesto, String> clmEstado1) {
+        this.clmEstado1 = clmEstado1;
+    }
+
+    public TableView<DispositivoCompuesto> getTblDispositivos1() {
+        return tblDispositivos1;
+    }
+
+    public void setTblDispositivos1(TableView<DispositivoCompuesto> tblDispositivos1) {
+        this.tblDispositivos1 = tblDispositivos1;
+    }
+
+    public TableColumn<DispositivoCompuesto, String> getClmPrioridad1() {
+        return clmPrioridad1;
+    }
+
+    public void setClmPrioridad1(TableColumn<DispositivoCompuesto, String> clmPrioridad1) {
+        this.clmPrioridad1 = clmPrioridad1;
+    }
+
+    public TableColumn<DispositivoCompuesto, String> getClmTipo1() {
+        return clmTipo1;
+    }
+
+    public void setClmTipo1(TableColumn<DispositivoCompuesto, String> clmTipo1) {
+        this.clmTipo1 = clmTipo1;
+    }
+
     public void ContarPorTipo(ActionEvent actionEvent) {
+        int contador = 0;
+        String tipo = txfContadorPorTipo.getText();
+        for (DispositivoSimple dispositivo : tblDispositivos.getItems()) {
+            if (dispositivo.tipo().equals(tipo)) {
+                contador++;
+            }
+        }
+        lblContadorPorTipo.setText("Cantidad de dispositivos de tipo " + tipo + ": " + contador);
     }
 
     public void OrdenarPorPrioridad(ActionEvent actionEvent) {
+        tblDispositivos.getItems().sort(Comparator.comparingInt(DispositivoSimple::prioridad));
+        tblDispositivos.refresh();
     }
 
     public void FiltrarConModulos(ActionEvent actionEvent) {
+        String modulo = lblModulo.getText();
+        TableView<DispositivoSimple> dispositivosFiltrados = new TableView<>();
+        for (DispositivoSimple dispositivo : tblDispositivos.getItems()) {
+            if (dispositivo.tipo().contains(modulo)) {
+                dispositivosFiltrados.getItems().add(dispositivo);
+            }
+        }
+        tblDispositivos.setItems(dispositivosFiltrados.getItems());
+
     }
 
     public void AgregarModulo(ActionEvent actionEvent) {
+        String nombre = lblNombre.getText();
+        String estado = lblEstado.getText();
+        int prioridad = Integer.parseInt(lblPrioridad.getText());
+        DispositivoSimple dispositivo = new DispositivoSimple(nombre, Boolean.parseBoolean(estado), prioridad);
+        tblDispositivos.getItems().add(dispositivo);
     }
 
     public void AgregarDispositivo(ActionEvent actionEvent) {
+        String nombre = lblNombre.getText();
+        String estado = lblEstado.getText();
+        int prioridad = Integer.parseInt(lblPrioridad.getText());
+        DispositivoSimple dispositivo = new DispositivoSimple(nombre, Boolean.parseBoolean(estado), prioridad);
+        tblDispositivos.getItems().add(dispositivo);
 
     }
     public void inicializarTablasDispositivoSimple(){
-        TableProductos = new TableView<DispositivoSimple>();
+        tblDispositivos = new TableView<DispositivoSimple>();
         clmEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
         clmPrioridad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().prioridad())));
         clmTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipo()));
@@ -214,5 +285,11 @@ public class DispositivoController {
         Stage stage = (Stage) ButtonRegresar.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+    public void inicializarTablasDispositivoCompuesto() {
+        tblDispositivos1 = new TableView<>();
+        clmEstado1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
+        clmPrioridad1.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().prioridad())));
+        clmTipo1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipo()));
     }
 }

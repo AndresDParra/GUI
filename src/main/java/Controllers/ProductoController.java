@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Comparator;
 
 public class ProductoController {
     public TableView<Producto> TableProductos;
@@ -215,7 +216,7 @@ public class ProductoController {
     }
 
     public void OrdenarPorPrecio(ActionEvent actionEvent) {
-        TableProductos.getItems().sort((p1, p2) -> Double.compare(p1.getPrecio(), p2.getPrecio()));
+        TableProductos.getItems().sort(Comparator.comparingDouble(Producto::getPrecio));
         TableProductos.refresh();
     }
 
