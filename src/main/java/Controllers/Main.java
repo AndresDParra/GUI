@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static Controllers.debugResourceLoading.debugResourceLoadingg;
 
-public class Main extends Application {
+public class  Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         debugResourceLoadingg();

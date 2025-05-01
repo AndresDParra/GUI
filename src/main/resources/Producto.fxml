@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="965.0" prefWidth="1307.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductoController">
+   <children>
+      <AnchorPane prefHeight="201.0" prefWidth="1307.0" style="-fx-background-color: fff300;" AnchorPane.bottomAnchor="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="14.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Mernequi" textAlignment="CENTER" wrappingWidth="1287.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="460.0" prefHeight="505.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
+         <children>
+            <TableView id="tablaProcductos" fx:id="TableProductos" layoutY="-29.0" prefHeight="514.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-29.0">
+              <columns>
+                <TableColumn id="columnaNombre" fx:id="ColumnNombre" prefWidth="200.0" text="Nombre" />
+                <TableColumn id="columnaPrecio" fx:id="ColumnPrecio" prefWidth="100.0" text="Precio" />
+                  <TableColumn id="columnaComponentes" fx:id="ColumnComponentes" prefWidth="1051.0" text="Componentes" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="156.0" prefHeight="276.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="533.0">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="125.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="EspacioNombre" layoutX="191.0" layoutY="40.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Nombre">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:" wrappingWidth="125.0" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="90.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Componente:" wrappingWidth="125.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="140.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="EspacioPrecio" layoutX="191.0" layoutY="90.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Precio">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="EspacioComponente" layoutX="191.0" layoutY="140.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Componente">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="ButtonAgregarProducto" layoutX="382.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarProducto" prefHeight="10.0" prefWidth="150.0" text="Agregar Producto" AnchorPane.leftAnchor="400.0" />
+            <Button fx:id="EspacioAgregarComponentes" layoutX="568.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarComponente" prefHeight="10.0" prefWidth="150.0" text="Agregar Componente" AnchorPane.leftAnchor="570.0" />
+            <Button fx:id="ButtonFiltrarPorComponente" layoutX="464.0" layoutY="104.0" mnemonicParsing="false" onAction="#FiltrarPorComponente" prefHeight="10.0" prefWidth="150.0" text="Filtrar Por Componente" AnchorPane.leftAnchor="464.0" />
+            <Button fx:id="ButtonCambiarNombre" layoutX="912.0" layoutY="38.0" mnemonicParsing="false" onAction="#CambiarNombre" prefHeight="10.0" prefWidth="150.0" text="Cambiar Nombre" AnchorPane.leftAnchor="912.0" />
+            <Button fx:id="ButtonCambiarPrecio" layoutX="740.0" layoutY="39.0" mnemonicParsing="false" onAction="#CambiarPrecio" prefHeight="10.0" prefWidth="150.0" text="Cambiar Precio" />
+            <Button fx:id="ButtonOrdenarPorPrecio" layoutX="665.0" layoutY="104.0" mnemonicParsing="false" onAction="#OrdenarPorPrecio" prefHeight="10.0" prefWidth="150.0" text="Ordenar Por Precio" AnchorPane.leftAnchor="665.0" />
+            <Button fx:id="ButtonContarPorNombre" layoutX="845.0" layoutY="104.0" mnemonicParsing="false" onAction="#ContarPorPrecio" prefHeight="10.0" prefWidth="150.0" text="Contar Por Nombre" AnchorPane.leftAnchor="845.0" />
+            <TextField id="txfContador" fx:id="EspacioNumeroProducto" layoutX="1018.0" layoutY="104.0" prefHeight="26.0" prefWidth="44.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
