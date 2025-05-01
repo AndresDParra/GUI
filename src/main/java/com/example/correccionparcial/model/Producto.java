@@ -14,7 +14,7 @@ public class Producto {
     /**
      * Constructor privado utilizado por el Builder.
      */
-    private Producto(Builder builder) {
+    public Producto(Builder builder) {
         this.nombre = builder.nombre;
         this.componentes = builder.componentes;
         this.precio = builder.precio;
@@ -30,6 +30,18 @@ public class Producto {
 
     public double getPrecio() {
         return precio;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setComponentes(List<String> componentes) {
+        this.componentes = componentes;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     /**

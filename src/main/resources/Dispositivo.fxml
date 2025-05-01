@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="965.0" prefWidth="1307.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DispositivoController">
+    <children>
+        <AnchorPane prefHeight="201.0" prefWidth="1307.0" style="-fx-background-color: fff300;" AnchorPane.bottomAnchor="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Text layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Mernequi - Dispositivo" textAlignment="CENTER" wrappingWidth="1287.0" AnchorPane.bottomAnchor="100.94140625" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="34.25390625">
+                    <font>
+                        <Font size="60.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="460.0" prefHeight="505.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
+            <children>
+                <TableView id="tablaProcductos" fx:id="TableProductos" layoutY="-20.0" prefHeight="513.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-20.0">
+                    <columns>
+                        <TableColumn fx:id="clmNombre" prefWidth="200.0" text="Nombre" />
+                        <TableColumn fx:id="clmEstado" prefWidth="100.0" text="Estado" />
+                  <TableColumn fx:id="clmPrioridad" prefWidth="100.0" text="Prioridad" />
+                  <TableColumn fx:id="clmTipo" prefWidth="100.0" text="Tipo" />
+                  <TableColumn fx:id="clmActivo" prefWidth="100.0" text="Activo" />
+                  <TableColumn fx:id="clmModulos" prefWidth="686.0" text="Modulos" />
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="156.0" prefHeight="276.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="533.0">
+            <children>
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="125.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="40.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Label fx:id="lblNombre" layoutX="191.0" layoutY="40.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Nombre">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado:" wrappingWidth="125.0" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="90.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prioridad:" wrappingWidth="125.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="140.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Label fx:id="lblEstado" layoutX="191.0" layoutY="90.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Estado">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblPrioridad" layoutX="191.0" layoutY="140.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Prioridad">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="BtnAgregarDispositivo" layoutX="382.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarDispositivo" prefHeight="10.0" prefWidth="150.0" text="Agregar Dispositivo" AnchorPane.leftAnchor="400.0" />
+                <Button fx:id="BtnAgregarModulo" layoutX="568.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarModulo" prefHeight="10.0" prefWidth="150.0" text="Agregar Modulo" AnchorPane.leftAnchor="570.0" />
+                <Button fx:id="BtnFiltrarConModulos" layoutX="483.0" layoutY="100.0" mnemonicParsing="false" onAction="#FiltrarConModulos" prefHeight="10.0" prefWidth="150.0" text="Filtrar Con Modulos" AnchorPane.leftAnchor="483.0" AnchorPane.topAnchor="100.0" />
+                <Button fx:id="BtnOrdenarPorPrioridad" layoutX="654.0" layoutY="100.0" mnemonicParsing="false" onAction="#OrdenarPorPrioridad" prefHeight="10.0" prefWidth="150.0" text="Ordenar Por Prioridad" AnchorPane.leftAnchor="654.0" AnchorPane.topAnchor="100.0" />
+                <Button fx:id="BtnContarPorTipo" layoutX="824.0" layoutY="100.0" mnemonicParsing="false" onAction="#ContarPorTipo" prefHeight="10.0" prefWidth="150.0" text="Contar Por Tipo" AnchorPane.leftAnchor="824.0" AnchorPane.topAnchor="100.0" />
+                <TextField fx:id="lblContadorPorTipo" layoutX="1018.0" layoutY="104.0" prefHeight="26.0" prefWidth="44.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="100.0" />
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="125.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblTipo" layoutX="191.0" layoutY="191.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Tipo">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="400.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modulo:" wrappingWidth="125.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblModulo" layoutX="525.0" layoutY="191.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Modulo">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
