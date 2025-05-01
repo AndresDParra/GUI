@@ -20,7 +20,7 @@
         </AnchorPane>
         <AnchorPane layoutY="460.0" prefHeight="505.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
             <children>
-                <TableView id="tablaProcductos" fx:id="TableProductos" layoutY="-20.0" prefHeight="513.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-20.0">
+                <TableView fx:id="tblDispositivos" layoutY="-20.0" prefHeight="513.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-20.0">
                     <columns>
                         <TableColumn fx:id="clmNombre" prefWidth="200.0" text="Nombre" />
                         <TableColumn fx:id="clmEstado" prefWidth="100.0" text="Estado" />
