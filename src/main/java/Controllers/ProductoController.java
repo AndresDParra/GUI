@@ -1,6 +1,7 @@
 package Controllers;
 
 import com.example.correccionparcial.model.Producto;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -240,5 +241,12 @@ public class ProductoController {
         Stage stage = (Stage) ButtonRegresar.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public void inicializartablasProductos() {
+        TableProductos = new TableView<>();
+        ColumnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        ColumnPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
+        ColumnComponentes.setCellValueFactory(cellData -> new SimpleStringProperty(String.join(", ", cellData.getValue().getComponentes())));
     }
 }

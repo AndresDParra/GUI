@@ -3,7 +3,13 @@ package Controllers;
 import com.example.correccionparcial.model.DispositivoSimple;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class DispositivoController {
     public TableView<DispositivoSimple> TableProductos;
@@ -21,8 +27,10 @@ public class DispositivoController {
     public TextField lblContadorPorTipo;
     public Label lblTipo;
     public Label lblModulo;
+    public TextField txfContadorPorTipo;
+    public Button ButtonRegresar;
 
-    public DispositivoController(TableView<DispositivoSimple> tableProductos, TableColumn<DispositivoSimple, String> clmEstado, TableColumn<DispositivoSimple, String> clmPrioridad, TableColumn<DispositivoSimple, String> clmTipo, Label lblNombre, Label lblEstado, Label lblPrioridad, Button btnAgregarDispositivo, Button btnAgregarModulo, Button btnFiltrarConModulos, Button btnOrdenarPorPrioridad, Button btnContarPorTipo, TextField lblContadorPorTipo, Label lblTipo, Label lblModulo) {
+    public DispositivoController(TableView<DispositivoSimple> tableProductos, TableColumn<DispositivoSimple, String> clmEstado, TableColumn<DispositivoSimple, String> clmPrioridad, TableColumn<DispositivoSimple, String> clmTipo, Label lblNombre, Label lblEstado, Label lblPrioridad, Button btnAgregarDispositivo, Button btnAgregarModulo, Button btnFiltrarConModulos, Button btnOrdenarPorPrioridad, Button btnContarPorTipo, TextField lblContadorPorTipo, Label lblTipo, Label lblModulo, TextField txfContadorPorTipo, Button buttonRegresar) {
         TableProductos = tableProductos;
         this.clmEstado = clmEstado;
         this.clmPrioridad = clmPrioridad;
@@ -38,6 +46,8 @@ public class DispositivoController {
         this.lblContadorPorTipo = lblContadorPorTipo;
         this.lblTipo = lblTipo;
         this.lblModulo = lblModulo;
+        this.txfContadorPorTipo = txfContadorPorTipo;
+        ButtonRegresar = buttonRegresar;
     }
 
     public DispositivoController() {
@@ -162,6 +172,18 @@ public class DispositivoController {
     public void setLblModulo(Label lblModulo) {
         this.lblModulo = lblModulo;
     }
+    public TextField getTxfContadorPorTipo() {
+        return txfContadorPorTipo;
+    }
+    public void setTxfContadorPorTipo(TextField txfContadorPorTipo) {
+        this.txfContadorPorTipo = txfContadorPorTipo;
+    }
+    public Button getButtonRegresar() {
+        return ButtonRegresar;
+    }
+    public void setButtonRegresar(Button buttonRegresar) {
+        ButtonRegresar = buttonRegresar;
+    }
 
     public void ContarPorTipo(ActionEvent actionEvent) {
     }
@@ -176,12 +198,21 @@ public class DispositivoController {
     }
 
     public void AgregarDispositivo(ActionEvent actionEvent) {
+
     }
-    public void inicializarTablas(){
+    public void inicializarTablasDispositivoSimple(){
         TableProductos = new TableView<DispositivoSimple>();
         clmEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
         clmPrioridad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().prioridad())));
         clmTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipo()));
 
+    }
+
+    public void Regresar(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("PaginaSeleccionProductoODispositivo.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ButtonRegresar.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
