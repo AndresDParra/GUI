@@ -11,7 +11,7 @@
     <children>
         <AnchorPane prefHeight="201.0" prefWidth="1307.0" style="-fx-background-color: fff300;" AnchorPane.bottomAnchor="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Text layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Mernequi" textAlignment="CENTER" wrappingWidth="1287.0" AnchorPane.bottomAnchor="100.94140625" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="34.25390625">
+                <Text layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Mernequi - Dispositivo" textAlignment="CENTER" wrappingWidth="1287.0" AnchorPane.bottomAnchor="100.94140625" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="34.25390625">
                     <font>
                         <Font size="60.0" />
                     </font>
@@ -20,15 +20,14 @@
         </AnchorPane>
         <AnchorPane layoutY="460.0" prefHeight="505.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
             <children>
-                <TableView id="tablaProcductos" fx:id="TableProductos" layoutY="-29.0" prefHeight="514.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-29.0">
+                <TableView id="tablaProcductos" fx:id="TableProductos" layoutY="-20.0" prefHeight="513.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-20.0">
                     <columns>
-                        <TableColumn id="columnaNombre" fx:id="ColumnNombre" prefWidth="200.0" text="Nombre" />
-                        <TableColumn id="columnaPrecio" fx:id="ColumnPrecio" prefWidth="100.0" text="Estado" />
-                  <TableColumn id="columnaPrecio" fx:id="ColumnPrecio1" prefWidth="100.0" text="Prioridad" />
-                  <TableColumn id="columnaPrecio" fx:id="ColumnPrecio11" prefWidth="100.0" text="Tipo" />
-                  <TableColumn id="columnaPrecio" fx:id="ColumnPrecio111" prefWidth="100.0" text="Activo" />
-                  <TableColumn id="columnaPrecio" fx:id="ColumnPrecio1111" prefWidth="100.0" text="Firewall" />
-                  <TableColumn id="columnaPrecio" fx:id="ColumnPrecio1112" prefWidth="100.0" text="Modulos" />
+                        <TableColumn fx:id="clmNombre" prefWidth="200.0" text="Nombre" />
+                        <TableColumn fx:id="clmEstado" prefWidth="100.0" text="Estado" />
+                  <TableColumn fx:id="clmPrioridad" prefWidth="100.0" text="Prioridad" />
+                  <TableColumn fx:id="clmTipo" prefWidth="100.0" text="Tipo" />
+                  <TableColumn fx:id="clmActivo" prefWidth="100.0" text="Activo" />
+                  <TableColumn fx:id="clmModulos" prefWidth="686.0" text="Modulos" />
                     </columns>
                 </TableView>
             </children>
@@ -40,39 +39,57 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Label fx:id="EspacioNombre" layoutX="191.0" layoutY="40.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Nombre">
+                <Label fx:id="lblNombre" layoutX="191.0" layoutY="40.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Nombre">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:" wrappingWidth="125.0" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="90.0">
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado:" wrappingWidth="125.0" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="90.0">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Componente:" wrappingWidth="125.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="140.0">
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prioridad:" wrappingWidth="125.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1152.0" AnchorPane.topAnchor="140.0">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
-                <Label fx:id="EspacioPrecio" layoutX="191.0" layoutY="90.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Precio">
+                <Label fx:id="lblEstado" layoutX="191.0" layoutY="90.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Estado">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="EspacioComponente" layoutX="191.0" layoutY="140.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Componente">
+                <Label fx:id="lblPrioridad" layoutX="191.0" layoutY="140.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Prioridad">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="BtnAgregarProducto" layoutX="382.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarProducto" prefHeight="10.0" prefWidth="150.0" text="Agregar Producto" AnchorPane.leftAnchor="400.0" />
-                <Button fx:id="BtnAgregarComponente" layoutX="568.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarComponente" prefHeight="10.0" prefWidth="150.0" text="Agregar Componente" AnchorPane.leftAnchor="570.0" />
-                <Button fx:id="BtnFiltrarPorComponente" layoutX="483.0" layoutY="100.0" mnemonicParsing="false" onAction="#FiltrarPorComponente" prefHeight="10.0" prefWidth="150.0" text="Filtrar Por Componente" AnchorPane.leftAnchor="483.0" AnchorPane.topAnchor="100.0" />
-                <Button fx:id="BtnCambiarNombre" layoutX="912.0" layoutY="38.0" mnemonicParsing="false" onAction="#CambiarNombre" prefHeight="10.0" prefWidth="150.0" text="Cambiar Nombre" AnchorPane.leftAnchor="910.0" AnchorPane.rightAnchor="247.0" />
-                <Button fx:id="BtnCambiarPrecio" layoutX="740.0" layoutY="39.0" mnemonicParsing="false" onAction="#CambiarPrecio" prefHeight="10.0" prefWidth="150.0" text="Cambiar Precio" AnchorPane.leftAnchor="740.0" />
-                <Button fx:id="BtnOrdenarPorPrecio" layoutX="654.0" layoutY="100.0" mnemonicParsing="false" onAction="#OrdenarPorPrecio" prefHeight="10.0" prefWidth="150.0" text="Ordenar Por Precio" AnchorPane.leftAnchor="654.0" AnchorPane.topAnchor="100.0" />
-                <Button fx:id="BtnContarPorNombre" layoutX="824.0" layoutY="100.0" mnemonicParsing="false" onAction="#ContarPorPrecio" prefHeight="10.0" prefWidth="150.0" text="Contar Por Nombre" AnchorPane.leftAnchor="824.0" AnchorPane.topAnchor="100.0" />
-                <TextField fx:id="EspacioNumeroProducto" layoutX="1018.0" layoutY="104.0" prefHeight="26.0" prefWidth="44.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="100.0" />
+                <Button fx:id="BtnAgregarDispositivo" layoutX="382.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarDispositivo" prefHeight="10.0" prefWidth="150.0" text="Agregar Dispositivo" AnchorPane.leftAnchor="400.0" />
+                <Button fx:id="BtnAgregarModulo" layoutX="568.0" layoutY="39.0" mnemonicParsing="false" onAction="#AgregarModulo" prefHeight="10.0" prefWidth="150.0" text="Agregar Modulo" AnchorPane.leftAnchor="570.0" />
+                <Button fx:id="BtnFiltrarConModulos" layoutX="483.0" layoutY="100.0" mnemonicParsing="false" onAction="#FiltrarConModulos" prefHeight="10.0" prefWidth="150.0" text="Filtrar Con Modulos" AnchorPane.leftAnchor="483.0" AnchorPane.topAnchor="100.0" />
+                <Button fx:id="BtnOrdenarPorPrioridad" layoutX="654.0" layoutY="100.0" mnemonicParsing="false" onAction="#OrdenarPorPrioridad" prefHeight="10.0" prefWidth="150.0" text="Ordenar Por Prioridad" AnchorPane.leftAnchor="654.0" AnchorPane.topAnchor="100.0" />
+                <Button fx:id="BtnContarPorTipo" layoutX="824.0" layoutY="100.0" mnemonicParsing="false" onAction="#ContarPorTipo" prefHeight="10.0" prefWidth="150.0" text="Contar Por Tipo" AnchorPane.leftAnchor="824.0" AnchorPane.topAnchor="100.0" />
+                <TextField fx:id="lblContadorPorTipo" layoutX="1018.0" layoutY="104.0" prefHeight="26.0" prefWidth="44.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="100.0" />
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="125.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblTipo" layoutX="191.0" layoutY="191.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Tipo">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="400.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modulo:" wrappingWidth="125.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblModulo" layoutX="525.0" layoutY="191.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: #ffffff;" text="Modulo">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
