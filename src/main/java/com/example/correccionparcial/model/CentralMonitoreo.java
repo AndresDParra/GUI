@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class CentralMonitoreo {
 
-    private List<Dispositivo> dispositivos;
+    private static List<Dispositivo> dispositivos;
 
     public CentralMonitoreo(List<Dispositivo> dispositivos) {
-        this.dispositivos = dispositivos;
+        CentralMonitoreo.dispositivos = dispositivos;
     }
 
     /**
@@ -79,5 +79,13 @@ public class CentralMonitoreo {
                 System.out.println(tipo + ": " + contador);
             }
         }
+    }
+
+    public static List<Dispositivo> getDispositivos() {
+        return dispositivos;
+    }
+
+    public static void setDispositivos(List<Dispositivo> dispositivos) {
+        CentralMonitoreo.dispositivos = dispositivos;
     }
 }

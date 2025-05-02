@@ -24,5 +24,4 @@ public class DetectorIntrusos extends ModuloDecorator{
     public String tipo() {
         return decorado.tipo();
     }
-    
 }

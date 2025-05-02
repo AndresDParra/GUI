@@ -1,12 +1,15 @@
 package Controllers;
 
 import com.example.correccionparcial.model.Producto;
+import com.example.correccionparcial.model.RegistroGlobal;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,9 +17,9 @@ import java.util.Comparator;
 
 public class ProductoController {
     public TableView<Producto> TableProductos;
-    public TableColumn<Producto,String > ColumnNombre;
-    public TableColumn<Producto,String > ColumnPrecio;
-    public TableColumn<Producto,String > ColumnComponentes;
+    public TableColumn<Producto, String> ColumnNombre;
+    public TableColumn<Producto, String> ColumnPrecio;
+    public TableColumn<Producto, String> ColumnComponentes;
     public TextField EspacioNombre;
     public Button ButtonAgregarProducto;
     public Button EspacioAgregarComponentes;
@@ -29,7 +32,7 @@ public class ProductoController {
     public TextField EspacioPrecio;
     public Button ButtonRegresar;
 
-    public ProductoController(TableView<Producto> tableProductos, TableColumn<Producto,String > columnNombre, TableColumn<Producto,String > columnPrecio, TableColumn<Producto,String > columnComponentes, TextField espacioNombre, Button buttonAgregarProducto, Button espacioAgregarComponentes, Button buttonFiltrarPorComponente, Button buttonCambiarPrecio, Button buttonOrdenarPorPrecio, Button buttonContarPorNombre, TextField espacioNumeroProducto, TextField espacioComponente, TextField espacioPrecio, Button buttonRegresar) {
+    public ProductoController(TableView<Producto> tableProductos, TableColumn<Producto, String> columnNombre, TableColumn<Producto, String> columnPrecio, TableColumn<Producto, String> columnComponentes, TextField espacioNombre, Button buttonAgregarProducto, Button espacioAgregarComponentes, Button buttonFiltrarPorComponente, Button buttonCambiarPrecio, Button buttonOrdenarPorPrecio, Button buttonContarPorNombre, TextField espacioNumeroProducto, TextField espacioComponente, TextField espacioPrecio, Button buttonRegresar) {
         TableProductos = tableProductos;
         ColumnNombre = columnNombre;
         ColumnPrecio = columnPrecio;
@@ -50,7 +53,7 @@ public class ProductoController {
     public ProductoController() {
     }
 
-    public TableView<Producto > getTableProductos() {
+    public TableView<Producto> getTableProductos() {
         return TableProductos;
     }
 
@@ -58,27 +61,27 @@ public class ProductoController {
         TableProductos = tableProductos;
     }
 
-    public TableColumn<Producto,String > getColumnNombre() {
+    public TableColumn<Producto, String> getColumnNombre() {
         return ColumnNombre;
     }
 
-    public void setColumnNombre(TableColumn<Producto,String > columnNombre) {
+    public void setColumnNombre(TableColumn<Producto, String> columnNombre) {
         ColumnNombre = columnNombre;
     }
 
-    public TableColumn<Producto,String > getColumnPrecio() {
+    public TableColumn<Producto, String> getColumnPrecio() {
         return ColumnPrecio;
     }
 
-    public void setColumnPrecio(TableColumn<Producto,String > columnPrecio) {
+    public void setColumnPrecio(TableColumn<Producto, String> columnPrecio) {
         ColumnPrecio = columnPrecio;
     }
 
-    public TableColumn<Producto,String > getColumnComponentes() {
+    public TableColumn<Producto, String> getColumnComponentes() {
         return ColumnComponentes;
     }
 
-    public void setColumnComponentes(TableColumn<Producto,String > columnComponentes) {
+    public void setColumnComponentes(TableColumn<Producto, String> columnComponentes) {
         ColumnComponentes = columnComponentes;
     }
 
@@ -175,6 +178,7 @@ public class ProductoController {
         String precio = EspacioPrecio.getText();
         String componentes = EspacioComponente.getText();
         Producto producto = new Producto.Builder().setNombre(nombre).setPrecio(Double.parseDouble(precio)).addComponente(componentes).build();
+        RegistroGlobal.getInstancia().getProductos().add(producto);
         TableProductos.getItems().add(producto);
         EspacioNombre.clear();
         EspacioPrecio.clear();
@@ -202,7 +206,6 @@ public class ProductoController {
         TableProductos.setItems(productosFiltrados.getItems());
         EspacioComponente.clear();
     }
-
 
 
     public void CambiarPrecio(ActionEvent actionEvent) {
@@ -245,9 +248,19 @@ public class ProductoController {
     }
 
     public void inicializartablasProductos() {
-        TableProductos = new TableView<>();
         ColumnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         ColumnPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
         ColumnComponentes.setCellValueFactory(cellData -> new SimpleStringProperty(String.join(", ", cellData.getValue().getComponentes())));
+
+        if (RegistroGlobal.getInstancia() != null && RegistroGlobal.getInstancia().getProductos() != null) {
+            TableProductos.setItems(FXCollections.observableArrayList(RegistroGlobal.getInstancia().getProductos()));
+            System.out.println("Products loaded: " + TableProductos.getItems().size());
+        } else {
+            System.out.println("No products available to load");
+        }
+        System.out.println("TableProductos: " + (TableProductos == null ? "null" : "initialized"));
+        System.out.println("ColumnNombre: " + (ColumnNombre == null ? "null" : "initialized"));
+        System.out.println("ColumnPrecio: " + (ColumnPrecio == null ? "null" : "initialized"));
+        System.out.println("ColumnComponentes: " + (ColumnComponentes == null ? "null" : "initialized"));
     }
 }

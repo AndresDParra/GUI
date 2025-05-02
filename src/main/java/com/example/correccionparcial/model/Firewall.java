@@ -4,7 +4,6 @@ package com.example.correccionparcial.model;
  * Módulo decorador que añade funcionalidad de firewall.
  */
 public class Firewall extends ModuloDecorator {
-
     public Firewall(Dispositivo decorado) {
         super(decorado);
         //TODO Auto-generated constructor stub

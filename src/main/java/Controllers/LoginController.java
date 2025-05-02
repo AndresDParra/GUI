@@ -19,8 +19,6 @@ public class LoginController {
 
     }
 
-
-
     public Button getButtonLogin() {
         return ButtonLogin;
     }

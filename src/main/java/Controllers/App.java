@@ -87,4 +87,3 @@ public class App {
         cm.contarPorTipo();
     }
 }
-

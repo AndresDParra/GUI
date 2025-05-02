@@ -56,5 +56,10 @@ public class RegistroGlobal {
         central.agregar(intrusosCamara);
         List<Dispositivo> lista = new ArrayList<>(Arrays.asList(central, camara, sensor, firewallSensor));
         CentralMonitoreo cm = new CentralMonitoreo(lista);
+        CentralMonitoreo.getDispositivos().add(camara);
+        CentralMonitoreo.getDispositivos().add(sensor);
+        CentralMonitoreo.getDispositivos().add(firewallSensor);
+        CentralMonitoreo.getDispositivos().add(intrusosCamara);
+        CentralMonitoreo.getDispositivos().add(central);    
     }
 }

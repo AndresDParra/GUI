@@ -45,5 +45,4 @@ public class DispositivoCompuesto implements Dispositivo {
     public String tipo() {
         return nombre;
     }
-    
 }

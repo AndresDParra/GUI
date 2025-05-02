@@ -18,11 +18,11 @@
       <AnchorPane layoutY="460.0" prefHeight="505.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
          <children>
             <TableView id="tablaProcductos" fx:id="TableProductos" layoutY="-29.0" prefHeight="514.0" prefWidth="1287.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-29.0">
-              <columns>
-                <TableColumn id="columnaNombre" fx:id="ColumnNombre" prefWidth="200.0" text="Nombre" />
-                <TableColumn id="columnaPrecio" fx:id="ColumnPrecio" prefWidth="100.0" text="Precio" />
+               <columns>
+                  <TableColumn id="columnaNombre" fx:id="ColumnNombre" prefWidth="200.0" text="Nombre" />
+                  <TableColumn id="columnaPrecio" fx:id="ColumnPrecio" prefWidth="100.0" text="Precio" />
                   <TableColumn id="columnaComponentes" fx:id="ColumnComponentes" prefWidth="1051.0" text="Componentes" />
-              </columns>
+               </columns>
             </TableView>
          </children>
       </AnchorPane>

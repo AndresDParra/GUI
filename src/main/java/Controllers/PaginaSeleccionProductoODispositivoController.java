@@ -38,18 +38,29 @@ public class PaginaSeleccionProductoODispositivoController {
     }
 
     public void CargarPaginaProductos(ActionEvent actionEvent) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("Producto.fxml"));
         Parent root = loader.load();
+        ProductoController controller = loader.getController();
         Stage stage = (Stage) ButtonProductos.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
+        controller.inicializartablasProductos();
     }
 
     public void CargarPaginaDispositivos(ActionEvent actionEvent) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("Dispositivo.fxml"));
         Parent root = loader.load();
+        DispositivoController controller = loader.getController();
         Stage stage = (Stage) ButtonDispositivos.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
+
+
+        controller.initialize();
+
     }
 }
