@@ -17,18 +17,11 @@
         </AnchorPane>
         <AnchorPane layoutY="460.0" prefHeight="505.0" prefWidth="1307.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="460.0">
             <children>
-                <TableView fx:id="tblDispositivos" layoutX="4.0" layoutY="-29.0" prefHeight="268.0" prefWidth="1299.0" AnchorPane.bottomAnchor="266.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-29.0">
-                    <columns>
-                        <TableColumn fx:id="clmEstado" prefWidth="100.0" text="Estado" />
-                        <TableColumn fx:id="clmPrioridad" prefWidth="100.0" text="Prioridad" />
-                        <TableColumn fx:id="clmTipo" prefWidth="100.0" text="Tipo" />
-                    </columns>
-                </TableView>
-                <TableView fx:id="tblDispositivos1" layoutY="253.0" prefHeight="246.0" prefWidth="1299.0">
+                <TableView fx:id="tblDispositivos1" layoutY="4.0" prefHeight="484.0" prefWidth="1299.0">
                     <columns>
                         <TableColumn fx:id="clmEstado1" prefWidth="100.0" text="Estado" />
                         <TableColumn fx:id="clmPrioridad1" prefWidth="100.0" text="Prioridad" />
-                        <TableColumn fx:id="clmTipo1" prefWidth="100.0" text="Tipo" />
+                        <TableColumn fx:id="clmTipo1" prefWidth="600.0" text="Tipo" />
                     </columns>
                 </TableView>
             </children>
@@ -54,7 +47,6 @@
                 <Button fx:id="BtnAgregarModulo" layoutX="570.0" layoutY="51.0" mnemonicParsing="false" onAction="#AgregarModulo" prefHeight="10.0" prefWidth="150.0" text="Agregar Modulo" AnchorPane.leftAnchor="570.0" />
                 <Button fx:id="BtnFiltrarConModulos" layoutX="400.0" layoutY="148.0" mnemonicParsing="false" onAction="#FiltrarConModulos" prefHeight="10.0" prefWidth="150.0" text="Filtrar Con Modulos" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="148.0" />
                 <Button fx:id="BtnOrdenarPorPrioridad" layoutX="570.0" layoutY="148.0" mnemonicParsing="false" onAction="#OrdenarPorPrioridad" prefHeight="10.0" prefWidth="150.0" text="Ordenar Por Prioridad" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="148.0" />
-                <Button fx:id="BtnContarPorTipo" layoutX="400.0" layoutY="242.0" mnemonicParsing="false" onAction="#ContarPorTipo" prefHeight="10.0" prefWidth="150.0" text="Contar Por Tipo" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="242.0" />
                 <TextField fx:id="txfContadorPorTipo" layoutX="623.0" layoutY="240.0" prefHeight="26.0" prefWidth="44.0" AnchorPane.rightAnchor="640.0" AnchorPane.topAnchor="240.0" />
                 <Text fill="WHITE" fontSmoothingType="LCD" layoutX="30.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modulo:" wrappingWidth="125.0">
                     <font>
@@ -66,6 +58,7 @@
                 <TextField fx:id="txfEstado" layoutX="186.0" layoutY="119.0" />
                 <TextField fx:id="txfPrioridad" layoutX="186.0" layoutY="186.0" />
                 <TextField fx:id="txfModulo" layoutX="191.0" layoutY="253.0" prefWidth="150.0" />
+            <Button fx:id="ButtonActualizar" layoutX="439.0" layoutY="252.0" mnemonicParsing="false" onAction="#Actualizartabla" text="Actualizar" />
             </children>
         </AnchorPane>
     </children>

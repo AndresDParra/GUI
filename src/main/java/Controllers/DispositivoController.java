@@ -19,14 +19,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class DispositivoController {
-    @FXML
-    public TableView<DispositivoSimple> tblDispositivos;
-    @FXML
-    public TableColumn<DispositivoSimple, String> clmEstado;
-    @FXML
-    public TableColumn<DispositivoSimple, String> clmPrioridad;
-    @FXML
-    public TableColumn<DispositivoSimple, String> clmTipo;
+
     @FXML
     public Button BtnAgregarDispositivo;
     @FXML
@@ -44,13 +37,13 @@ public class DispositivoController {
     @FXML
     public Button ButtonRegresar;
     @FXML
-    public TableColumn<DispositivoCompuesto, String> clmEstado1;
+    public TableColumn<Dispositivo, String> clmEstado1;
     @FXML
-    public TableView<DispositivoCompuesto> tblDispositivos1;
+    public TableView<Dispositivo> tblDispositivos1;
     @FXML
-    public TableColumn<DispositivoCompuesto, String> clmPrioridad1;
+    public TableColumn<Dispositivo, String> clmPrioridad1;
     @FXML
-    public TableColumn<DispositivoCompuesto, String> clmTipo1;
+    public TableColumn<Dispositivo, String> clmTipo1;
     @FXML
     public TextField txfNombre;
     @FXML
@@ -61,8 +54,13 @@ public class DispositivoController {
     public TextField txfTipo;
     @FXML
     public TextField txfModulo;
+    @FXML
+    public Button ButtonActualizar;
 
-    public DispositivoController(Button btnAgregarDispositivo, Button btnAgregarModulo, Button btnFiltrarConModulos, Button btnOrdenarPorPrioridad, Button btnContarPorTipo, TextField lblContadorPorTipo, TextField txfContadorPorTipo, Button buttonRegresar, TextField txfNombre, TextField txfEstado, TextField txfPrioridad, TextField txfTipo, TextField txfModulo) {
+    private ObservableList<Dispositivo> listaOriginal;
+
+    public DispositivoController(Button ButtonActualizar, Button btnAgregarDispositivo, Button btnAgregarModulo, Button btnFiltrarConModulos, Button btnOrdenarPorPrioridad, Button btnContarPorTipo, TextField lblContadorPorTipo, TextField txfContadorPorTipo, Button buttonRegresar, TableColumn<Dispositivo, String> clmEstado1, TableView<Dispositivo> tblDispositivos1, TableColumn<Dispositivo, String> clmPrioridad1, TableColumn<Dispositivo, String> clmTipo1, TextField txfNombre, TextField txfEstado, TextField txfPrioridad, TextField txfTipo, TextField txfModulo, Button buttonActualizar) {
+        this.ButtonActualizar = buttonActualizar;
         BtnAgregarDispositivo = btnAgregarDispositivo;
         BtnAgregarModulo = btnAgregarModulo;
         BtnFiltrarConModulos = btnFiltrarConModulos;
@@ -71,6 +69,10 @@ public class DispositivoController {
         this.lblContadorPorTipo = lblContadorPorTipo;
         this.txfContadorPorTipo = txfContadorPorTipo;
         ButtonRegresar = buttonRegresar;
+        this.clmEstado1 = clmEstado1;
+        this.tblDispositivos1 = tblDispositivos1;
+        this.clmPrioridad1 = clmPrioridad1;
+        this.clmTipo1 = clmTipo1;
         this.txfNombre = txfNombre;
         this.txfEstado = txfEstado;
         this.txfPrioridad = txfPrioridad;
@@ -79,38 +81,6 @@ public class DispositivoController {
     }
 
     public DispositivoController() {
-    }
-
-    public TableView<DispositivoSimple> getTblDispositivos() {
-        return tblDispositivos;
-    }
-
-    public void setTblDispositivos(TableView<DispositivoSimple> tblDispositivos) {
-        this.tblDispositivos = tblDispositivos;
-    }
-
-    public TableColumn<DispositivoSimple, String> getClmEstado() {
-        return clmEstado;
-    }
-
-    public void setClmEstado(TableColumn<DispositivoSimple, String> clmEstado) {
-        this.clmEstado = clmEstado;
-    }
-
-    public TableColumn<DispositivoSimple, String> getClmPrioridad() {
-        return clmPrioridad;
-    }
-
-    public void setClmPrioridad(TableColumn<DispositivoSimple, String> clmPrioridad) {
-        this.clmPrioridad = clmPrioridad;
-    }
-
-    public TableColumn<DispositivoSimple, String> getClmTipo() {
-        return clmTipo;
-    }
-
-    public void setClmTipo(TableColumn<DispositivoSimple, String> clmTipo) {
-        this.clmTipo = clmTipo;
     }
 
     public Button getBtnAgregarDispositivo() {
@@ -177,35 +147,43 @@ public class DispositivoController {
         ButtonRegresar = buttonRegresar;
     }
 
-    public TableColumn<DispositivoCompuesto, String> getClmEstado1() {
+    public Button getButtonActualizar() {
+        return ButtonActualizar;
+    }
+
+    public void setButtonActualizar(Button buttonActualizar) {
+        ButtonActualizar = buttonActualizar;
+    }
+
+    public TableColumn<Dispositivo, String> getClmEstado1() {
         return clmEstado1;
     }
 
-    public void setClmEstado1(TableColumn<DispositivoCompuesto, String> clmEstado1) {
+    public void setClmEstado1(TableColumn<Dispositivo, String> clmEstado1) {
         this.clmEstado1 = clmEstado1;
     }
 
-    public TableView<DispositivoCompuesto> getTblDispositivos1() {
+    public TableView<Dispositivo> getTblDispositivos1() {
         return tblDispositivos1;
     }
 
-    public void setTblDispositivos1(TableView<DispositivoCompuesto> tblDispositivos1) {
+    public void setTblDispositivos1(TableView<Dispositivo> tblDispositivos1) {
         this.tblDispositivos1 = tblDispositivos1;
     }
 
-    public TableColumn<DispositivoCompuesto, String> getClmPrioridad1() {
+    public TableColumn<Dispositivo, String> getClmPrioridad1() {
         return clmPrioridad1;
     }
 
-    public void setClmPrioridad1(TableColumn<DispositivoCompuesto, String> clmPrioridad1) {
+    public void setClmPrioridad1(TableColumn<Dispositivo, String> clmPrioridad1) {
         this.clmPrioridad1 = clmPrioridad1;
     }
 
-    public TableColumn<DispositivoCompuesto, String> getClmTipo1() {
+    public TableColumn<Dispositivo, String> getClmTipo1() {
         return clmTipo1;
     }
 
-    public void setClmTipo1(TableColumn<DispositivoCompuesto, String> clmTipo1) {
+    public void setClmTipo1(TableColumn<Dispositivo, String> clmTipo1) {
         this.clmTipo1 = clmTipo1;
     }
 
@@ -252,7 +230,7 @@ public class DispositivoController {
     public void ContarPorTipo(ActionEvent actionEvent) {
         int contador = 0;
         String tipo = txfContadorPorTipo.getText();
-        for (DispositivoSimple dispositivo : tblDispositivos.getItems()) {
+        for (Dispositivo dispositivo : tblDispositivos1.getItems()) {
             if (dispositivo.tipo().equals(tipo)) {
                 contador++;
             }
@@ -260,29 +238,31 @@ public class DispositivoController {
         lblContadorPorTipo.setText("Cantidad de dispositivos de tipo " + tipo + ": " + contador);
     }
 
-    public void OrdenarPorPrioridad(ActionEvent actionEvent) {
-        tblDispositivos.getItems().sort(Comparator.comparingInt(DispositivoSimple::prioridad));
-        tblDispositivos.refresh();
-    }
-
-    public void FiltrarConModulos(ActionEvent actionEvent) {
-        String modulo = txfModulo.getText();
-        TableView<DispositivoSimple> dispositivosFiltrados = new TableView<>();
-        for (DispositivoSimple dispositivo : tblDispositivos.getItems()) {
-            if (dispositivo.tipo().contains(modulo)) {
-                dispositivosFiltrados.getItems().add(dispositivo);
-            }
-        }
-        tblDispositivos.setItems(dispositivosFiltrados.getItems());
-
-    }
-
     public void AgregarModulo(ActionEvent actionEvent) {
         String nombre = txfNombre.getText();
         String estado = txfEstado.getText();
         int prioridad = Integer.parseInt(txfPrioridad.getText());
         DispositivoSimple dispositivo = new DispositivoSimple(nombre, Boolean.parseBoolean(estado), prioridad);
-        tblDispositivos.getItems().add(dispositivo);
+        tblDispositivos1.getItems().add(dispositivo);
+        tblDispositivos1.refresh();
+    }
+
+    public void OrdenarPorPrioridad(ActionEvent actionEvent) {
+        tblDispositivos1.getItems().sort(Comparator.comparingInt(Dispositivo::prioridad));
+        tblDispositivos1.refresh();
+    }
+
+    public void FiltrarConModulos(ActionEvent actionEvent) {
+        ObservableList<Dispositivo> dispositivosConModulos = FXCollections.observableArrayList();
+        for (Dispositivo dispositivo : tblDispositivos1.getItems()) {
+            System.out.println((dispositivo.getClass().getName()));
+            if (dispositivo instanceof ModuloDecorator) {
+                dispositivosConModulos.add(dispositivo);
+                break;
+            }
+        }
+        tblDispositivos1.setItems(dispositivosConModulos);
+        tblDispositivos1.refresh();
     }
 
     public void AgregarDispositivo(ActionEvent actionEvent) {
@@ -293,23 +273,26 @@ public class DispositivoController {
 
         DispositivoSimple dispositivo = new DispositivoSimple(nombre, Boolean.parseBoolean(estado), prioridad);
 
-        if (txfModulo.getText().isEmpty() ) {
+        if (txfModulo.getText().isEmpty()) {
 
-            tblDispositivos.getItems().add(dispositivo);
+            tblDispositivos1.getItems().add(dispositivo);
+            CentralMonitoreo.getDispositivos().add(dispositivo);
         } else {
-            if (modulo == 1){
+            if (modulo == 1) {
                 DispositivoCompuesto dispositivoCompuesto = new DispositivoCompuesto(nombre);
                 dispositivoCompuesto.agregar(new DispositivoSimple(nombre, Boolean.parseBoolean(estado), prioridad));
                 Firewall firewall = new Firewall(dispositivoCompuesto);
                 tblDispositivos1.getItems().add(dispositivoCompuesto);
+                CentralMonitoreo.getDispositivos().add(dispositivo);
             }
-            if (modulo == 2){
+            if (modulo == 2) {
                 DispositivoCompuesto dispositivoCompuesto = new DispositivoCompuesto(nombre);
                 dispositivoCompuesto.agregar(new DispositivoSimple(nombre, Boolean.parseBoolean(estado), prioridad));
                 DetectorIntrusos detectorIntrusos = new DetectorIntrusos(dispositivoCompuesto);
                 tblDispositivos1.getItems().add(dispositivoCompuesto);
-            }
-            else {
+                CentralMonitoreo.getDispositivos().add(dispositivo);
+
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Invalid Module");
@@ -337,17 +320,11 @@ public class DispositivoController {
             // Call your existing initialization method
             inicializarTablasDispositivoCompuesto();
 
-            // Initialize empty ObservableLists if needed
-            if (tblDispositivos.getItems() == null) {
-                tblDispositivos.setItems(FXCollections.observableArrayList());
-            }
-
-
             if (tblDispositivos1.getItems() == null) {
                 tblDispositivos1.setItems(FXCollections.observableArrayList());
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -359,22 +336,33 @@ public class DispositivoController {
 
     public void inicializarTablasDispositivoCompuesto() throws IOException {
         // Initialize tables (code moved from static methods)
-        clmEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
-        clmPrioridad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().prioridad())));
-        clmTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipo()));
 
         clmEstado1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
         clmPrioridad1.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().prioridad())));
         clmTipo1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().tipo()));
 
-        System.out.println("tblDispositivos: " + (tblDispositivos == null ? "null" : "initialized"));
-        System.out.println("clmEstado: " + (clmEstado == null ? "null" : "initialized"));
-        System.out.println("clmPrioridad: " + (clmPrioridad == null ? "null" : "initialized"));
-        System.out.println("clmTipo: " + (clmTipo == null ? "null" : "initialized"));
-
         System.out.println("tblDispositivos1: " + (tblDispositivos1 == null ? "null" : "initialized"));
         System.out.println("clmEstado1: " + (clmEstado1 == null ? "null" : "initialized"));
         System.out.println("clmPrioridad1: " + (clmPrioridad1 == null ? "null" : "initialized"));
         System.out.println("clmTipo1: " + (clmTipo1 == null ? "null" : "initialized"));
+    }
+
+    public void Actualizartabla(ActionEvent actionEvent) {
+        try {
+            for (int i = 0; i <CentralMonitoreo.getDispositivos().size(); i++) {
+
+                listaOriginal = FXCollections.observableArrayList(CentralMonitoreo.getDispositivos());
+                tblDispositivos1.setItems(listaOriginal);
+                // Refresh the table view
+                tblDispositivos1.refresh();
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Update Error");
+            alert.setContentText("An error occurred during update: " + e.getMessage());
+            alert.showAndWait();
+        }
     }
 }

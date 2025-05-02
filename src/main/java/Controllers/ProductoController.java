@@ -1,9 +1,12 @@
 package Controllers;
 
+import com.example.correccionparcial.model.Dispositivo;
+import com.example.correccionparcial.model.ModuloDecorator;
 import com.example.correccionparcial.model.Producto;
 import com.example.correccionparcial.model.RegistroGlobal;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -205,6 +208,17 @@ public class ProductoController {
         }
         TableProductos.setItems(productosFiltrados.getItems());
         EspacioComponente.clear();
+
+        ObservableList<Producto> dispositivosConModulos = FXCollections.observableArrayList();
+        for (Producto producto : tblDispositivos1.getItems()) {
+            System.out.println((producto.getClass().getName()));
+            if (producto instanceof ModuloDecorator) {
+                dispositivosConModulos.add(producto);
+                break;
+            }
+        }
+        tblDispositivos1.setItems(dispositivosConModulos);
+        tblDispositivos1.refresh();
     }
 
 

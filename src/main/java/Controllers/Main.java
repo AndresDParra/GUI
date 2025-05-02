@@ -16,7 +16,7 @@ public class  Main extends Application {
         debugResourceLoadingg();
         RegistroGlobal.inicializarClases();
         FXMLLoader fxmlLoader = new FXMLLoader(ClassLoader.getSystemResource("Login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 520, 440);
+        Scene scene = new Scene(fxmlLoader.load(), 580, 400);
         stage.setTitle("Welcome to FentaLibre!");
         stage.setScene(scene);
         stage.show();
