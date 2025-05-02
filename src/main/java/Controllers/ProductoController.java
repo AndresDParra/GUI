@@ -1,9 +1,6 @@
 package Controllers;
 
-import com.example.correccionparcial.model.Dispositivo;
-import com.example.correccionparcial.model.ModuloDecorator;
-import com.example.correccionparcial.model.Producto;
-import com.example.correccionparcial.model.RegistroGlobal;
+import com.example.correccionparcial.model.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 
 public class ProductoController {
     public TableView<Producto> TableProductos;
@@ -199,28 +197,30 @@ public class ProductoController {
     }
 
     public void FiltrarPorComponente(ActionEvent actionEvent) {
-        String componente = EspacioComponente.getText();
-        TableView<Producto> productosFiltrados = new TableView<>();
+        String componenteBuscado = EspacioComponente.getText().trim().toLowerCase();
+
+        if (componenteBuscado == null || componenteBuscado.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Campo vacio");
+            alert.setHeaderText("No se ingreso un componente");
+            alert.setContentText("Por favor ingrese un componente para filtrar");
+            alert.showAndWait();
+            return;
+        }
+        ObservableList<Producto> productosComponente = FXCollections.observableArrayList();
         for (Producto producto : TableProductos.getItems()) {
-            if (producto.contiene(componente)) {
-                productosFiltrados.getItems().add(producto);
+            List<String> componentes = producto.getComponentes();
+            for (String componente : componentes) {
+                if (componente.toLowerCase().equals(componenteBuscado)){
+                    productosComponente.add(producto);
+                    break;
+                }
             }
         }
-        TableProductos.setItems(productosFiltrados.getItems());
+        TableProductos.setItems(productosComponente);
+        TableProductos.refresh();
         EspacioComponente.clear();
-
-        ObservableList<Producto> dispositivosConModulos = FXCollections.observableArrayList();
-        for (Producto producto : tblDispositivos1.getItems()) {
-            System.out.println((producto.getClass().getName()));
-            if (producto instanceof ModuloDecorator) {
-                dispositivosConModulos.add(producto);
-                break;
-            }
-        }
-        tblDispositivos1.setItems(dispositivosConModulos);
-        tblDispositivos1.refresh();
     }
-
 
     public void CambiarPrecio(ActionEvent actionEvent) {
         int index = Integer.parseInt(EspacioNumeroProducto.getText());
